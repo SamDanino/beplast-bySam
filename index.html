@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Beplast - Пластиковые изделия высокого качества</title>
+<style>
+  /* Colors from beplast.ru */
+  :root {
+    --primary-color: #1e3a6a;
+    --accent-color: #f3bc00;
+    --dark-color: #0f254c;
+    --light-bg: #f9f9f9;
+    --text-color: #353535;
+    --header-bg: var(--dark-color);
+    --btn-bg: var(--accent-color);
+    --btn-hover-bg: #d1a400;
+  }
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin:0; padding:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: var(--btn-hover-bg);
+  }
+
+  /* Navigation from first site beplast.ru */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--header-bg);
+  box-shadow: 0 3px 8px rgb(16 24 40 / 0.2);
+  z-index: 500;
+}
+.header-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 18px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.logo-text {
+  font-weight: 700;
+  font-size: 27px;
+  color: var(--accent-color);
+  user-select: none;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.menu a {
+  font-weight: 500;
+  font-size: 17px;
+  padding: 8px 18px;
+  color: #ffffff;
+  border-radius: 25px;
+  user-select: none;
+  transition: background-color 0.4s ease;
+}
+.menu a:hover {
+  background-color: var(--accent-color);
+  color: var(--header-bg);
+}
+ 
+
+/* Responsive menu toggle for mobile */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  width: 25px;
+  height: 22px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.menu-toggle span {
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+@media (max-width: 768px) {
+  .menu {
+    position: fixed;
+    top: 62px;
+    right: 0;
+    background-color: var(--header-bg);
+    flex-direction: column;
+    padding: 30px 25px;
+    border-radius: 0 0 0 12px;
+    box-shadow: -5px 0 15px rgb(16 24 40 / 0.3);
+    width: 220px;
+    height: calc(100vh - 60px);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+  }
+  .menu.open {
+    transform: translateX(0);
+  }
+  .menu a {
+    font-size: 18px;
+    padding: 12px 25px;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Hero section from first site beplast.ru */
+#hero {
+  margin-top: 62px;
+  background: linear-gradient(30deg, var(--accent-color) 0%, var(--primary-color) 100%);
+  color: #fff;
+  min-height: 93vh;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  padding: 0 clamp(20px, 3vw, 60px);
+  user-select: none;
+}
+#hero .hero-text {
+  max-width: 470px;
+}
+#hero h1 {
+  font-weight: 700;
+  font-size: clamp(1.8rem, 8vw, 3.7rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+#hero p {
+  font-weight: 400;
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  margin: 0 0 2rem;
+  line-height: 1.4;
+  user-select: text;
+}
+#hero .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 14px 26px;
+  border-radius: 40px;
+  background-color: #f3bc00;
+  color: #0f254c;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 8px 22px rgb(243 188 0 / 0.78);
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+#hero .button:hover,
+#hero .button:focus {
+  background-color: #d1a400;
+  box-shadow: 0 8px 35px rgb(209 164 0 / 1);
+  outline: none;
+}
+#hero .hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#hero .hero-image img {
+  max-width: 85%;
+  border-radius: 18px;
+  box-shadow: 0 25px 45px rgb(22 27 39 / 0.5);
+  user-select: none;
+}
+/* Responsive grid for hero: collapse on smaller screens */
+@media (max-width: 992px){
+  #hero {
+    grid-template-columns: 1fr;
+    padding-bottom: 40px;
+    min-height: 75vh;
+  }
+  #hero .hero-image {
+    margin-top: 40px;
+  }
+  #hero .hero-image img {
+    max-width: 100%;
+  }
+  #hero h1 {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+  #hero p {
+    font-size: clamp(1rem, 4vw, 1.15rem);
+  }
+}
+
+/* Sections styling */
+section {
+  padding: 80px clamp(20px, 4vw, 50px);
+  max-width: 1140px;
+  margin: 0 auto;
+}
+h2.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  user-select: none;
+  position: relative;
+}
+h2.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 4px;
+  border-radius: 20px;
+  background: var(--accent-color);
+}
+
+/* About section */
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.about-text {
+  max-width: 600px;
+  line-height: 1.7;
+  font-weight: 500;
+  color: var(--text-color);
+  user-select: text;
+}
+.about-image img {
+  max-width: 480px;
+  border-radius: 16px;
+  box-shadow: 0 16px 22px rgb(102 117 179 / 0.25);
+  user-select: none;
+}
+
+/* Products section */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 40px;
+}
+.product-card {
+  background: white;
+  padding: 28px 20px 30px;
+  border-radius: 18px;
+  box-shadow: 0 16px 26px rgb(102 117 179 / 0.1);
+  text-align: center;
+  cursor: default;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+.product-card:hover,
+.product-card:focus-within {
+  box-shadow: 0 24px 48px rgb(102 117 179 / 0.35);
+  transform: translateY(-10px);
+  outline: none;
+}
+.product-card img {
+  max-width: 90px;
+  margin-bottom: 25px;
+  user-select: none;
+}
+.product-card h3 {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+.product-card p {
+  font-weight: 500;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* Contact section */
+.contact-section {
+  background: var(--header-bg);
+  color: #fff;
+  padding: 60px 30px;
+  border-radius: 25px;
+  box-shadow: 0 20px 55px rgb(15 37 109 / 0.65);
+  max-width: 620px;
+  margin: 0 auto 80px;
+  user-select: none;
+}
+.contact-section h2 {
+  color: var(--accent-color);
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  user-select: none;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contact-form label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: none;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: inherit;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 3px solid var(--accent-color);
+  background: #fefbbf;
+}
+.contact-form textarea {
+  min-height: 100px;
+}
+.contact-form button {
+  background-color: var(--btn-bg);
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 14px 0;
+  border: none;
+  border-radius: 40px;
+  color: var(--header-bg);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 28px rgb(243 188 0 / 0.7);
+  user-select: none;
+}
+.contact-form button:hover,
+.contact-form button:focus {
+  background-color: var(--btn-hover-bg);
+  box-shadow: 0 10px 30px rgb(209 164 0 / 0.95);
+  outline: none;
+}
+#form-status {
+  margin-top: 15px;
+  font-weight: 700;
+  text-align: center;
+  min-height: 1.4rem;
+}
+
+/* Footer */
+footer {
+  background-color: var(--header-bg);
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 20px 20px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Animations for scroll reveal */
+.sr {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.7s ease-out;
+}
+.sr.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+  .about-image img {
+    max-width: 100%;
+  }
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <div class="header-logo" tabindex="0" aria-label="Beplast Logo">
+      <div class="logo-text">Beplast</div>
+    </div>
+    <nav>
+      <div class="menu-toggle" aria-label="Открыть меню" aria-expanded="false" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu" role="menubar">
+        <a href="#hero" role="menuitem" class="nav-link active">Главная</a>
+        <a href="#about" role="menuitem" class="nav-link">О компании</a>
+        <a href="#products" role="menuitem" class="nav-link">Продукция</a>
+        <a href="#contact" role="menuitem" class="nav-link">Контакты</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section id="hero" role="banner" aria-label="Главная секция">
+  <div class="hero-text">
+    <h1>Пластиковые изделия высокого качества</h1>
+    <p>Современные технологии и экологичный подход — Ваш надежный партнер в производстве пластика</p>
+    <button class="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Связаться с нами">Связаться с нами</button>
+  </div>
+  <div class="hero-image" aria-hidden="true">
+    <img src="/img/009.jpg" alt="Производство пластиковых изделий" />
+  </div>
+</section>
+
+<section id="about" aria-labelledby="about-title" class="sr">
+  <h2 class="section-title" id="about-title">О компании</h2>
+  <div class="about-content">
+    <div class="about-text">
+      <p>Компания Beplast с 2005 года поставляет высококачественную пластиковую продукцию, отвечающую мировым стандартам. Мы используем инновационные методы производства, уделяя особое внимание экологической безопасности и эффективности.</p>
+      <p>Наши специалисты обеспечивают постоянный контроль качества на всех этапах производства. Мы берем ответственность за экологию и делаем всё, чтобы снизить влияние на окружающую среду.</p>
+    </div>
+    <div class="about-image">
+      <img src="/img/7ETBv7qRuPM.jpg" alt="Производство пластиковых изделий" />
+    </div>
+  </div>
+</section>
+
+<section id="products" aria-labelledby="products-title" class="sr">
+  <h2 class="section-title" id="products-title">Наша продукция</h2>
+  <div class="products-grid">
+    <article class="product-card" tabindex="0" aria-label="">
+      <img src="/img/1922348.jpg" alt="">
+      <h3>Пластиковые крышки</h3>
+      <p>Крышки для разнообразных изделий.</p>
+    </article>
+    <article class="product-card" tabindex="0" aria-label="">
+      <img src="/img/7ETBv7qRuPM.jpg" alt="">
+      <h3>Пластиковые контейнера</h3>
+      <p>Пищевые контейнера для еды.</p>
+    </article>
+    <article class="product-card" tabindex="0" aria-label="Упаковочные материалы">
+      <img src="/img/1922348.jpg" alt="Упаковочные материалы">
+      <h3>Упаковочные материалы</h3>
+      <p>Переработанные материалы для безопасной и прочной упаковки разных товаров.</p>
+    </article>
+    <article class="product-card" tabindex="0" aria-label="Пластиковые компоненты">
+      <img src="/img/1922348.jpg" alt="Пластиковые компоненты" />
+      <h3>Пластиковые компоненты</h3>
+      <p>Разнообразные компоненты для промышленности и технических нужд.</p>
+    </article>
+        <article class="product-card" tabindex="0" aria-label="Упаковочные материалы">
+      <img src="/img/1922348.jpg" alt="Упаковочные материалы">
+      <h3>Упаковочные материалы</h3>
+      <p>Переработанные материалы для безопасной и прочной упаковки разных товаров.</p>
+    </article>
+    <article class="product-card" tabindex="0" aria-label="Пластиковые компоненты">
+      <img src="/img/1922348.jpg" alt="Пластиковые компоненты" />
+      <h3>Пластиковые компоненты</h3>
+      <p>Разнообразные компоненты для промышленности и технических нужд.</p>
+    </article>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="contact-title" class="contact-section sr">
+  <h2 id="contact-title">Свяжитесь с нами</h2>
+  <form id="contact-form" aria-label="Контактная форма" class="contact-form">
+    <label for="name">Имя</label>
+    <input type="text" id="name" name="name" required autocomplete="name" placeholder="Введите ваше имя" />
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required autocomplete="email" placeholder="example@mail.com" />
+    <label for="message">Сообщение</label>
+    <textarea id="message" name="message" rows="4" required placeholder="Ваше сообщение"></textarea>
+    <button type="submit">Отправить</button>
+    <p role="alert" id="form-status" aria-live="polite"></p>
+  </form>
+</section>
+<footer>
+  &copy; 2024 Beplast. Все права защищены.
+</footer>
+ 
+<script>
+  // Responsive menu
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+ 
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+    menuToggle.setAttribute('aria-expanded', !expanded);
+  });
+  // Close menu on link click
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', false);
+    });
+  });
+ 
+  // Navigation active link highlighting on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.menu a');
+ 
+  function onScroll() {
+    const scrollPos = window.scrollY + 100;
+    sections.forEach(section => {
+      if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight){
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if(link.getAttribute('href') === '#' + section.id){
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+  window.addEventListener('scroll', onScroll);
+ 
+  // Scroll reveal
+  const srElements = document.querySelectorAll('.sr');
+  function revealOnScroll() {
+    const windowBottom = window.innerHeight + window.scrollY - 100;
+    srElements.forEach(el => {
+      if(el.offsetTop < windowBottom){
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+ 
+  // Contact form submission simulation
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+ 
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+ 
+
+    if(!name || !email || !message){
+      statusEl.textContent = 'Пожалуйста, заполните все поля.';
+      statusEl.style.color = 'var(--accent-color)';
+      return;
+    }
+    const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    if(!emailPattern.test(email)){
+      statusEl.textContent = 'Введите корректный email.';
+      statusEl.style.color = 'var(--accent-color)';
+      return;
+    }
+    statusEl.style.color = '#4caf50';
+    statusEl.textContent = 'Спасибо! Ваше сообщение отправлено.';
+    form.reset();
+  });
+</script>
+</body>
+</html>
