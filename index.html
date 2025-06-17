@@ -7,9 +7,9 @@
 <style>
   /* Colors from beplast.ru */
   :root {
-    --primary-color: #1e3a6a;
-    --accent-color: #f3bc00;
-    --dark-color: #0f254c;
+    --primary-color: #000000;
+    --accent-color: #ffffff;
+    --dark-color: #000000;
     --light-bg: #f9f9f9;
     --text-color: #353535;
     --header-bg: var(--dark-color);
@@ -59,9 +59,13 @@ header {
   gap: 20px;
 }
 .logo-text {
+  img{
+    width: 150px;
+  }
+  display: flex;
+  align-items: center;
   font-weight: 700;
   font-size: 27px;
-  color: var(--accent-color);
   user-select: none;
 }
 .menu {
@@ -128,8 +132,10 @@ header {
 
 /* Hero section from first site beplast.ru */
 #hero {
+  background: #789BE6;
+}
+#hero .container{
   margin-top: 62px;
-  background: linear-gradient(30deg, var(--accent-color) 0%, var(--primary-color) 100%);
   color: #fff;
   min-height: 93vh;
   display: grid;
@@ -162,18 +168,16 @@ header {
   font-size: 1.2rem;
   padding: 14px 26px;
   border-radius: 40px;
-  background-color: #f3bc00;
-  color: #0f254c;
+  background-color: #000000;
+  color: #ffffff;
   cursor: pointer;
   border: none;
-  box-shadow: 0 8px 22px rgb(243 188 0 / 0.78);
   transition: background-color 0.3s ease;
   user-select: none;
 }
 #hero .button:hover,
 #hero .button:focus {
-  background-color: #d1a400;
-  box-shadow: 0 8px 35px rgb(209 164 0 / 1);
+  background-color: #5a80d3;
   outline: none;
 }
 #hero .hero-image {
@@ -209,7 +213,7 @@ header {
 }
 
 /* Sections styling */
-section {
+.container {
   padding: 80px clamp(20px, 4vw, 50px);
   max-width: 1140px;
   margin: 0 auto;
@@ -298,7 +302,7 @@ h2.section-title::after {
 
 /* Contact section */
 .contact-section {
-  background: var(--header-bg);
+  background: #789BE6;
   color: #fff;
   padding: 60px 30px;
   border-radius: 25px;
@@ -350,13 +354,13 @@ h2.section-title::after {
   color: var(--header-bg);
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 28px rgb(243 188 0 / 0.7);
+  box-shadow: 0 8px 28px #789BE6;
   user-select: none;
 }
 .contact-form button:hover,
 .contact-form button:focus {
   background-color: var(--btn-hover-bg);
-  box-shadow: 0 10px 30px rgb(209 164 0 / 0.95);
+  box-shadow: 0 10px 30px #789BE6;
   outline: none;
 }
 #form-status {
@@ -407,8 +411,8 @@ footer {
 <body>
 <header>
   <div class="header-container">
-    <div class="header-logo" tabindex="0" aria-label="Beplast Logo">
-      <div class="logo-text">Beplast</div>
+    <div class="header-logo" aria-label="Beplast Logo">
+      <div class="logo-text"><img src="./img/logo.svg" alt="logo"></div>
     </div>
     <nav>
       <div class="menu-toggle" aria-label="Открыть меню" aria-expanded="false" role="button" tabindex="0">
@@ -427,13 +431,15 @@ footer {
 </header>
 
 <section id="hero" role="banner" aria-label="Главная секция">
-  <div class="hero-text">
-    <h1>Пластиковые изделия высокого качества</h1>
-    <p>Современные технологии и экологичный подход — Ваш надежный партнер в производстве пластика</p>
-    <button class="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Связаться с нами">Связаться с нами</button>
-  </div>
-  <div class="hero-image" aria-hidden="true">
-    <img src="/img/009.jpg" alt="Производство пластиковых изделий" />
+  <div class="container">
+    <div class="hero-text">
+      <h1>Пластиковые изделия высокого качества</h1>
+      <p>Современные технологии и экологичный подход — Ваш надежный партнер в производстве пластика</p>
+      <button class="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Связаться с нами">Связаться с нами</button>
+    </div>
+    <div class="hero-image" aria-hidden="true">
+      <img src="/img/009.jpg" alt="Производство пластиковых изделий" />
+    </div>
   </div>
 </section>
 
@@ -450,16 +456,16 @@ footer {
   </div>
 </section>
 
-<section id="products" aria-labelledby="products-title" class="sr">
+<section id="products" aria-labelledby="products-title" class="sr container">
   <h2 class="section-title" id="products-title">Наша продукция</h2>
   <div class="products-grid">
     <article class="product-card" tabindex="0" aria-label="">
-      <img src="/img/1922348.jpg" alt="">
+      <img src="/img/1922348.jpg" alt="Пластиковые крышки">
       <h3>Пластиковые крышки</h3>
       <p>Крышки для разнообразных изделий.</p>
     </article>
     <article class="product-card" tabindex="0" aria-label="">
-      <img src="/img/7ETBv7qRuPM.jpg" alt="">
+      <img src="/img/7ETBv7qRuPM.jpg" alt="Пластиковые контейнера">
       <h3>Пластиковые контейнера</h3>
       <p>Пищевые контейнера для еды.</p>
     </article>
@@ -486,7 +492,7 @@ footer {
   </div>
 </section>
 
-<section id="contact" aria-labelledby="contact-title" class="contact-section sr">
+<section id="contact" aria-labelledby="contact-title" class="contact-section sr container">
   <h2 id="contact-title">Свяжитесь с нами</h2>
   <form id="contact-form" aria-label="Контактная форма" class="contact-form">
     <label for="name">Имя</label>
